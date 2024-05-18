@@ -13,7 +13,7 @@
                 <!-- /input-group -->
             </li>
             <li>
-                <a href="index.html" class="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                <a href="{{ route('home') }}" class="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
             </li>
             {{-- <li>
                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span
@@ -25,11 +25,11 @@
                     <li>
                         <a href="morris.html">Morris.js Charts</a>
                     </li> --}}
-                {{-- </ul> --}}
-                <!-- /.nav-second-level -->
+            {{-- </ul> --}}
+            <!-- /.nav-second-level -->
             {{-- </li> --}}
             <li>
-                <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
+                <a href="{{ route('penulis.index') }}"><i class="fa fa-table fa-fw"></i> Data Penulis</a>
             </li>
             {{-- <li>
                 <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
