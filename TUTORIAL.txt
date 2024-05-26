@@ -1,0 +1,89 @@
+ 1. Buat Migration (tabel)
+	- php artisan make:migration create_nama_table --create=nama_table
+	
+	- BUAT FIELD TABLE
+		<?php
+  			use Illuminate\Database\Schema\Blueprint;
+			use Illuminate\Database\Migrations\Migration;
+
+			class CreatePostsTable extends Migration
+		{
+			public function up()
+			{
+				Schema::create('posts', function (Blueprint $table) {
+					$table->increments('id');
+					$table->string('title')->unique();
+					$table->string('content');
+					$table->timestamps();
+				});
+			}
+
+			public function down()
+			{
+				Schema::drop('Nama-Table');
+			}
+		}
+
+	- php artisan migrate or
+	- php artisan migrate:fresh
+
+2. Buat Seeder (Record table)
+	- php artisan make:seeder NamaTableSeeder
+	
+	- ISI RECORD TABEL
+		use Illuminate\Support\Facades\DB; //add this in top
+
+		public function run()
+		{
+	    	  $Nama-Table = [
+			  ['title'=>'Tips Cepat Nikah', 'content'=>'lorem ipsum'],
+			  ['title'=>'Haruskah Menunda Nikah?', 'content'=>'lorem ipsum'],
+		 	  ['title'=>'Membangun Visi Misi Keluarga', 'content'=>'lorem ipsum']
+	     	 ];
+
+		// masukkan data ke database
+			DB::table('Nama-Table')->insert($Nama-Table);
+		}
+
+
+	- tambah ini di DatabaseSeeder.php
+		
+		$this->call(NamaTableSeeder::class);
+
+	- php artisasn db:seed
+
+3. Buat Model 
+	- php artisan make:model Nama-Table
+	
+	- 
+		<?php
+
+			namespace App\Models;
+
+			use Illuminate\Database\Eloquent\Factories\HasFactory;
+			use Illuminate\Database\Eloquent\Model;
+
+			class Barang extends Model
+		{
+    			use HasFactory;
+			
+			//field2 yang ada di table mnh
+    			protected $fillable = ['id', 'nama', 'jumlah'];
+    			public $timestamps = true;
+		}
+
+	- di routes/web
+		// Menampilkan data dari database
+		Route::get('/testmodel2', function () {
+    		$data = Nama-tabel::all();
+    		return $data;
+		});
+
+- BUAT LOGIN DAN REGISTER DI LARAVEL
+
+1. Buat Perintah php artisan Composer require laravel/ui
+2. Buat Perintah php artisan ui bootstrap --auth
+3. Buat Perintah php artisan make:controller namanya -r
+
+4. php artisan make:model -crm product (Migration, model, controller dalam satu klik)
+     
